@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: zy-app
+  name: zy-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zy-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: zy-app
+    spec:
+      containers:
+      - image: nginx:latest
+        name: nginx
+        resources: {}
+status: {}

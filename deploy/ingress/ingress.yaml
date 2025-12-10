@@ -26,7 +26,7 @@ spec:
           service:
             name: user01-web
             port:
-              number: 8081
+              number: 3000
         path: /user01
         pathType: Exact
   - http:
@@ -35,6 +35,6 @@ spec:
           service:
             name: user02-web
             port:
-              number: 8081
+              number: 3000
         path: /user02
         pathType: Exact

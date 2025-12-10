@@ -19,7 +19,7 @@ spec:
           image: nginx:latest
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 3000
           resources: {}
 
 ---
@@ -33,7 +33,7 @@ spec:
   selector: {}
   ports:
     - name: http
-      port: 8081
-      targetPort: 80
+      port: 3000
+      targetPort: 3000
   type: ClusterIP
 

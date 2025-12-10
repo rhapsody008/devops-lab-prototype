@@ -3,11 +3,11 @@ name: CI Workflow
 on:
   push:
     branches:
-      - "user01" # Trigger only on this branch (based on your TRIGGER_BRANCH logic)
+      - "user01"
 
 env:
   # Configuration
-  REGISTRY_URL: "docker.io" # https:// is usually implied
+  REGISTRY_URL: "docker.io"
   REGISTRY_USERNAME: "rhapsody008"
   IMAGE_NAME: "zy-app"
   

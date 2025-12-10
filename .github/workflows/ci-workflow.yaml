@@ -64,7 +64,6 @@ jobs:
           repository: ${{ env.GITOPS_REPO }}
           token: ${{ secrets.ACCESS_TOKEN }} 
           ref: ${{ env.CONFIG_REPO_BRANCH }}
-          path: gitops
 
       - name: Set Short SHA as TAG
         run: echo "TAG=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV

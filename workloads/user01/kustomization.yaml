@@ -17,7 +17,7 @@ images:
 labels:
   - pairs:
       app.kubernetes.io/owner: "user01"
-      app.kubernetes.io/name:
+      app.kubernetes.io/name: "nginx28"
     includeSelectors: true
     includeTemplates: true
 

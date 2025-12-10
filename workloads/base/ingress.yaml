@@ -1,7 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: zy-app
+  name: web
 spec:
   stripPrefix:
     prefixes:
@@ -15,7 +15,7 @@ metadata:
     kubernetes.io/ingress.class: kommander-traefik
     traefik.ingress.kubernetes.io/router.tls: "false"
     traefik.ingress.kubernetes.io/router.middlewares: zyproj-zy-app@kubernetescrd
-  name: zy-app-ingress
+  name: web-ingress
   namespace: zyproj
 spec:
   rules:
@@ -23,7 +23,7 @@ spec:
       paths:
       - backend:
           service:
-            name: zy-app-svc
+            name: web
             port:
               number: 8081
         path: /zy

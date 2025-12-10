@@ -1,19 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zy-app
-  namespace: zyproj
+  name: web
   labels:
-    app: zy-app
+    app: web
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: zy-app
+      app: web
   template:
     metadata:
       labels:
-        app: zy-app
+        app: web
     spec:
       containers:
         - name: nginx
@@ -27,13 +26,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: zy-app-svc
-  namespace: zyproj
+  name: web
   labels:
-    app: zy-app
+    app: web
 spec:
   selector:
-    app: zy-app
+    app: web
   ports:
     - name: http
       port: 8081

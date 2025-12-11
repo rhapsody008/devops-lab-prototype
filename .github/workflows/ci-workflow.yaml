@@ -83,6 +83,7 @@ jobs:
           git config --global user.email "yi.zhou@nutanix.com"
           git config --global user.name "Zhou Yi"
 
+          mkdir -p ./workloads/${{ github.event.inputs.user }}
           cd ./workloads/${{ github.event.inputs.user }}
           
           cat <<EOF > kustomization.yaml

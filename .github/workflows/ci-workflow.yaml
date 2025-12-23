@@ -76,20 +76,21 @@ jobs:
           ref: main
 
       - name: Set Short SHA as TAG
-        run: echo "TAG=$(echo ${{ github.event.inputs.user }}-${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
+        run: echo "TAG=$(echo ${{ github.event.inputs.user }}-$(echo ${{ github.sha }} | cut -c1-7))" >> $GITHUB_ENV
 
       - name: Generate Kustomize Manifest
         run: |
           git config --global user.email "yi.zhou@nutanix.com"
           git config --global user.name "Zhou Yi"
 
+          mkdir -p ./workloads/${{ github.event.inputs.user }}
           cd ./workloads/${{ github.event.inputs.user }}
           
           cat <<EOF > kustomization.yaml
           apiVersion: kustomize.config.k8s.io/v1beta1
           kind: Kustomization
           resources:
-            - webapp.yaml
+            - ../webapp.yaml
 
           namePrefix: "${{ github.event.inputs.user }}-"
 

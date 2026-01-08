@@ -26,10 +26,12 @@ SERVICE_PORT=8080
 # Or edit the line below:
 GITLAB_PAT="${GITLAB_PAT:-your_token_here}"
 GITLAB_USER="root"
+GITLAB_CA_CRT="$(openssl s_client -showcerts -connect gitlab.ntnxlab.local:443 </dev/null 2>/dev/null | openssl x509 -outform PEM)"
 
 # Encode to Base64 for K8s Secret
 GITLAB_PAT_BASE64=$(echo -n "$GITLAB_PAT" | base64)
 GITLAB_USER_BASE64=$(echo -n "$GITLAB_USER" | base64)
+GITLAB_CA_CRT_BASE64=$(echo -n "$GITLAB_CA_CRT" | base64)
 
 # Range for users
 START=1
@@ -74,6 +76,7 @@ type: Opaque
 data:
   password: ${GITLAB_PAT_BASE64}
   username: ${GITLAB_USER_BASE64}
+  ca.crt: ${GITLAB_CA_CRT_BASE64}
 EOF
 
 ###################

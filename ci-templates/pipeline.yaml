@@ -22,6 +22,7 @@ variables:
   GITOPS_BASE_URL: "${GITLAB_URL}/${CI_PROJECT_NAMESPACE}/gitops-$[[ inputs.username ]].git"
   # Disable Docker TLS for DinD
   DOCKER_TLS_CERTDIR: ""
+  DOCKER_BUILDKIT: "0"
 
 # ---------------------------------------------------------------------------
 # JOB 1: Build and Push
